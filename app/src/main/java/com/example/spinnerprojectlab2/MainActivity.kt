@@ -1,5 +1,6 @@
 package com.example.spinnerprojectlab2
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             insets
 
         }
-        val textView:TextView=findViewById(R.id.textview_id)
+
         val button:Button=findViewById(R.id.button_id)
         val spinner:Spinner=findViewById(R.id.spinner_id)
         val makeup=resources.getStringArray(R.array.makeup_product_string)
@@ -51,14 +52,14 @@ class MainActivity : AppCompatActivity() {
                 val mk=selectedmakeup
                 if(mk!=null)
                 {
-                    val menuitems= getMenu(mk)
-                    textView.text=menuitems.toString()
+                    val message= (getMenu(mk)).toString()
+                    val intent=Intent(applicationContext,SecondPage::class.java)
+                    intent.putExtra("message",message)
+                    startActivity(intent)
                 }
             }
 
         }
-
-
 
 
     }
